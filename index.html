@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RONSHERLOCK Research & Information Center</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink:      #0D0F1A;
+      --cream:    #FAFAF7;
+      --royal:    #1B2A8A;
+      --violet:   #5C2D91;
+      --magenta:  #C2185B;
+      --gold:     #F9A825;
+      --teal:     #00897B;
+      --sky:      #0288D1;
+      --white:    #FFFFFF;
+      --card-bg:  #FFFFFF;
+      --border:   #E0E0E8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, var(--royal) 0%, var(--violet) 50%, var(--magenta) 100%);
+      color: var(--white);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-particles {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        radial-gradient(circle at 15% 25%, rgba(249,168,37,.25) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(0,137,123,.2) 0%, transparent 40%),
+        radial-gradient(circle at 50% 10%, rgba(255,255,255,.08) 0%, transparent 50%);
+    }
+
+    .header-inner {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 48px;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    /* ── LOGO ── */
+    .logo-svg { flex-shrink: 0; filter: drop-shadow(0 4px 24px rgba(0,0,0,.4)); }
+
+    .brand-text { flex: 1; }
+
+    .brand-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    h1.brand-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      line-height: 1.1;
+      letter-spacing: -.01em;
+      color: var(--white);
+    }
+
+    h1.brand-name span { color: var(--gold); }
+
+    .brand-tagline {
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,.75);
+      max-width: 520px;
+    }
+
+    .header-badges {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .badge {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      backdrop-filter: blur(6px);
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--royal);
+      border-top: 2px solid var(--gold);
+    }
+    nav ul {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      list-style: none;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+    }
+    nav ul li a {
+      display: block;
+      padding: 14px 20px;
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: color .2s, background .2s;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      color: var(--gold);
+      background: rgba(255,255,255,.06);
+    }
+
+    /* ── MAIN ── */
+    main { max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── ONBOARDING GATE ── */
+    #onboarding-gate {
+      position: fixed; inset: 0;
+      background: linear-gradient(135deg, var(--royal) 0%, var(--violet) 60%, var(--magenta) 100%);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .gate-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 48px 40px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 32px 80px rgba(0,0,0,.35);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gate-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--magenta), var(--gold), var(--teal));
+    }
+
+    .gate-logo { margin: 0 auto 20px; }
+
+    .gate-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.7rem;
+      color: var(--royal);
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .gate-sub {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 32px;
+    }
+
+    .gate-form { display: flex; flex-direction: column; gap: 16px; text-align: left; }
+
+    .field-group { display: flex; flex-direction: column; gap: 6px; }
+
+    .field-group label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--royal);
+    }
+
+    .field-group input,
+    .field-group select {
+      padding: 12px 16px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      appearance: none;
+      background: var(--cream);
+    }
+
+    .field-group input:focus,
+    .field-group select:focus {
+      border-color: var(--violet);
+      box-shadow: 0 0 0 4px rgba(92,45,145,.12);
+    }
+
+    .gate-btn {
+      margin-top: 8px;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--royal), var(--violet));
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: .04em;
+      transition: transform .15s, box-shadow .15s;
+      box-shadow: 0 4px 20px rgba(27,42,138,.35);
+    }
+
+    .gate-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(27,42,138,.45); }
+
+    /* ── WELCOME BANNER ── */
+    #welcome-banner {
+      display: none;
+      background: linear-gradient(90deg, var(--teal), var(--sky));
+      color: var(--white);
+      border-radius: 14px;
+      padding: 18px 24px;
+      margin-bottom: 36px;
+      display: none;
+      align-items: center;
+      gap: 14px;
+      font-size: 15px;
+    }
+    #welcome-banner.visible { display: flex; }
+    #welcome-banner .wave { font-size: 24px; }
+    #welcome-banner strong { font-weight: 700; }
+
+    /* ── SECTION TITLE ── */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--ink);
+    }
+
+    .section-rule {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, var(--magenta), transparent);
+      border: none;
+    }
+
+    .section-count {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: #999;
+    }
+
+    /* ── FILTER BAR ── */
+    #filter-bar {
+      display: none;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    }
+    #filter-bar.visible { display: flex; }
+
+    .filter-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--royal);
+      white-space: nowrap;
+    }
+
+    .filter-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .chip {
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 2px solid var(--border);
+      background: var(--cream);
+      color: #555;
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .chip.active, .chip:hover {
+      background: var(--violet);
+      border-color: var(--violet);
+      color: var(--white);
+    }
+
+    /* ── RESEARCH GRID ── */
+    #research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .research-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,.07);
+      border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .research-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.13);
+    }
+
+    .card-accent {
+      height: 5px;
+    }
+
+    .card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+
+    .card-course-tag {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .card-abstract {
+      font-size: 13.5px;
+      color: #555;
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 18px;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #888;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+
+    .card-date { font-family: 'Space Mono', monospace; }
+
+    .card-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--white);
+      transition: opacity .15s;
+    }
+    .card-download:hover { opacity: .85; }
+
+    /* ── UPLOAD PANEL ── */
+    #upload-panel {
+      display: none;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 4px 32px rgba(0,0,0,.08);
+      border: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+    #upload-panel.visible { display: block; }
+
+    #upload-panel h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--royal);
+      margin-bottom: 24px;
+    }
+
+    .upload-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 640px) { .upload-grid { grid-template-columns: 1fr; } }
+
+    .upload-field { display: flex; flex-direction: column; gap: 6px; }
+    .upload-field.full { grid-column: 1 / -1; }
+
+    .upload-field label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--violet);
+    }
+
+    .upload-field input,
+    .upload-field select,
+    .upload-field textarea {
+      padding: 11px 14px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      background: var(--cream);
+      transition: border-color .2s;
+    }
+    .upload-field textarea { resize: vertical; min-height: 90px; }
+    .upload-field input:focus,
+    .upload-field select:focus,
+    .upload-field textarea:focus { border-color: var(--violet); }
+
+    .upload-btn {
+      margin-top: 24px;
+      padding: 14px 36px;
+      background: linear-gradient(135deg, var(--magenta), var(--violet));
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: .05em;
+      transition: transform .15s, box-shadow .15s;
+      box-shadow: 0 4px 18px rgba(194,24,91,.3);
+    }
+    .upload-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(194,24,91,.4); }
+
+    /* ── EMPTY STATE ── */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 64px 24px;
+      color: #aaa;
+    }
+    .empty-state .icon { font-size: 56px; margin-bottom: 16px; }
+    .empty-state p { font-size: 15px; }
+
+    /* ── ADMIN TOGGLE ── */
+    #admin-area {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+    #admin-btn {
+      padding: 9px 20px;
+      background: var(--ink);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: .04em;
+      transition: background .15s;
+    }
+    #admin-btn:hover { background: var(--royal); }
+
+    /* ── STATS ROW ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 8px rgba(0,0,0,.05);
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--royal), var(--magenta));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,.6);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 13px;
+    }
+    footer strong { color: var(--gold); }
+
+    /* ── TOAST ── */
+    #toast {
+      position: fixed;
+      bottom: 32px; left: 50%; transform: translateX(-50%) translateY(80px);
+      background: var(--teal);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 8px 32px rgba(0,0,0,.2);
+      transition: transform .3s;
+      z-index: 9999;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 600px) {
+      .header-inner { flex-direction: column; align-items: flex-start; }
+      .gate-card { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ░░ ONBOARDING GATE ░░ -->
+<div id="onboarding-gate">
+  <div class="gate-card">
+    <!-- Inline logo -->
+    <svg class="gate-logo" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="40" r="40" fill="url(#gateGrad)"/>
+      <defs>
+        <linearGradient id="gateGrad" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#1B2A8A"/>
+          <stop offset="0.5" stop-color="#5C2D91"/>
+          <stop offset="1" stop-color="#C2185B"/>
+        </linearGradient>
+      </defs>
+      <!-- Book icon -->
+      <rect x="22" y="22" width="18" height="26" rx="2" fill="white" opacity=".9"/>
+      <rect x="24" y="24" width="14" height="22" rx="1" fill="url(#bookFill)"/>
+      <defs>
+        <linearGradient id="bookFill" x1="24" y1="24" x2="38" y2="46" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#F9A825"/>
+          <stop offset="1" stop-color="#C2185B"/>
+        </linearGradient>
+      </defs>
+      <rect x="40" y="22" width="18" height="26" rx="2" fill="white" opacity=".9"/>
+      <rect x="42" y="24" width="14" height="22" rx="1" fill="url(#bookFill2)"/>
+      <defs>
+        <linearGradient id="bookFill2" x1="42" y1="24" x2="56" y2="46" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#00897B"/>
+          <stop offset="1" stop-color="#0288D1"/>
+        </linearGradient>
+      </defs>
+      <!-- Magnifier -->
+      <circle cx="48" cy="54" r="8" fill="none" stroke="white" stroke-width="2.5"/>
+      <line x1="54" y1="60" x2="60" y2="66" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Star spark -->
+      <circle cx="27" cy="55" r="3" fill="#F9A825"/>
+      <line x1="27" y1="50" x2="27" y2="49" stroke="#F9A825" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="27" y1="60" x2="27" y2="61" stroke="#F9A825" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="22" y1="55" x2="21" y2="55" stroke="#F9A825" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="32" y1="55" x2="33" y2="55" stroke="#F9A825" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+
+    <div class="gate-title">RONSHERLOCK<br>Research Center</div>
+    <div class="gate-sub">Please introduce yourself to access curated research</div>
+
+    <div class="gate-form">
+      <div class="field-group">
+        <label>Your Full Name</label>
+        <input type="text" id="gate-name" placeholder="e.g. Jane Mwangi" autocomplete="name"/>
+      </div>
+      <div class="field-group">
+        <label>Course / Field of Study</label>
+        <select id="gate-course">
+          <option value="">— Select your course —</option>
+          <option value="Computer Science">Computer Science</option>
+          <option value="Medicine & Health Sciences">Medicine &amp; Health Sciences</option>
+          <option value="Engineering">Engineering</option>
+          <option value="Biology">Biology</option>
+          <option value="Chemistry">Chemistry</option>
+          <option value="Physics">Physics</option>
+          <option value="Mathematics">Mathematics</option>
+          <option value="Economics">Economics</option>
+          <option value="Law">Law</option>
+          <option value="Education">Education</option>
+          <option value="Environmental Science">Environmental Science</option>
+          <option value="Psychology">Psychology</option>
+          <option value="All Courses">All Courses / General</option>
+        </select>
+      </div>
+      <button class="gate-btn" onclick="enterSite()">Enter the Research Center →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ░░ HEADER ░░ -->
+<header>
+  <div class="header-particles"></div>
+  <div class="header-inner">
+    <!-- Logo SVG -->
+    <svg class="logo-svg" width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outer ring -->
+      <circle cx="55" cy="55" r="52" fill="url(#outerGrad)" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+      <defs>
+        <radialGradient id="outerGrad" cx="30%" cy="25%" r="80%">
+          <stop stop-color="#1B2A8A"/>
+          <stop offset="0.6" stop-color="#5C2D91"/>
+          <stop offset="1" stop-color="#C2185B"/>
+        </radialGradient>
+      </defs>
+      <!-- Inner glow ring -->
+      <circle cx="55" cy="55" r="44" fill="none" stroke="rgba(249,168,37,0.3)" stroke-width="1"/>
+      <!-- Open book base -->
+      <rect x="18" y="36" width="32" height="42" rx="3" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+      <rect x="20" y="38" width="28" height="38" rx="2" fill="url(#leftPage)"/>
+      <defs>
+        <linearGradient id="leftPage" x1="20" y1="38" x2="48" y2="76" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#F9A825" stop-opacity="0.9"/>
+          <stop offset="1" stop-color="#FF6F00" stop-opacity="0.7"/>
+        </linearGradient>
+      </defs>
+      <rect x="60" y="36" width="32" height="42" rx="3" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+      <rect x="62" y="38" width="28" height="38" rx="2" fill="url(#rightPage)"/>
+      <defs>
+        <linearGradient id="rightPage" x1="62" y1="38" x2="90" y2="76" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#00E5FF" stop-opacity="0.8"/>
+          <stop offset="1" stop-color="#00897B" stop-opacity="0.7"/>
+        </linearGradient>
+      </defs>
+      <!-- Spine line -->
+      <line x1="55" y1="35" x2="55" y2="79" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+      <!-- Page lines left -->
+      <line x1="25" y1="46" x2="43" y2="46" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+      <line x1="25" y1="52" x2="43" y2="52" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+      <line x1="25" y1="58" x2="43" y2="58" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+      <line x1="25" y1="64" x2="38" y2="64" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+      <!-- Page lines right -->
+      <line x1="67" y1="46" x2="85" y2="46" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+      <line x1="67" y1="52" x2="85" y2="52" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+      <line x1="67" y1="58" x2="85" y2="58" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+      <line x1="67" y1="64" x2="80" y2="64" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+      <!-- Magnifier -->
+      <circle cx="76" cy="26" r="10" fill="none" stroke="#F9A825" stroke-width="2.5"/>
+      <line x1="83" y1="33" x2="90" y2="40" stroke="#F9A825" stroke-width="3" stroke-linecap="round"/>
+      <!-- Star sparks -->
+      <polygon points="55,12 56.5,16 60.5,16 57.5,18.5 58.5,22.5 55,20 51.5,22.5 52.5,18.5 49.5,16 53.5,16" fill="#F9A825"/>
+      <circle cx="22" cy="26" r="3" fill="#00E5FF" opacity=".8"/>
+      <circle cx="90" cy="75" r="2.5" fill="#C2185B" opacity=".8"/>
+    </svg>
+
+    <div class="brand-text">
+      <div class="brand-eyebrow">🔬 Verified Academic Research Portal</div>
+      <h1 class="brand-name">RONSHERLOCK<br><span>Research &amp; Information</span> Center</h1>
+      <p class="brand-tagline">Curated scientific research and academic papers — filtered precisely for your field of study.</p>
+      <div class="header-badges">
+        <span class="badge">📚 Peer-Reviewed</span>
+        <span class="badge">🎓 Student-Focused</span>
+        <span class="badge">🔒 Original Research</span>
+        <span class="badge">🌍 Open Access</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── NAV ── -->
+<nav>
+  <ul>
+    <li><a href="#" class="active" onclick="showSection('home',this)">🏠 Home</a></li>
+    <li><a href="#" onclick="showSection('research',this)">📄 Research Papers</a></li>
+    <li><a href="#" onclick="showSection('about',this)">ℹ️ About</a></li>
+    <li><a href="#" onclick="showSection('contact',this)">✉️ Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ░░ MAIN CONTENT ░░ -->
+<main>
+  <!-- Welcome Banner -->
+  <div id="welcome-banner">
+    <span class="wave">👋</span>
+    <span>Welcome, <strong id="banner-name"></strong>! Showing research for <strong id="banner-course"></strong>.</span>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row" id="stats-row">
+    <div class="stat-card">
+      <div class="stat-num" id="stat-papers">0</div>
+      <div class="stat-label">Research Papers</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-courses">0</div>
+      <div class="stat-label">Courses Covered</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-year">2025</div>
+      <div class="stat-label">Since</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Original Research</div>
+    </div>
+  </div>
+
+  <!-- Admin area -->
+  <div id="admin-area">
+    <button id="admin-btn" onclick="toggleAdmin()">🔐 Admin: Add Research</button>
+  </div>
+
+  <!-- Upload Panel (admin only) -->
+  <div id="upload-panel">
+    <h2>📤 Add New Research Paper</h2>
+    <div class="upload-grid">
+      <div class="upload-field">
+        <label>Paper Title</label>
+        <input type="text" id="up-title" placeholder="Full title of the research"/>
+      </div>
+      <div class="upload-field">
+        <label>Course / Field</label>
+        <select id="up-course">
+          <option value="">— Select —</option>
+          <option>Computer Science</option>
+          <option>Medicine &amp; Health Sciences</option>
+          <option>Engineering</option>
+          <option>Biology</option>
+          <option>Chemistry</option>
+          <option>Physics</option>
+          <option>Mathematics</option>
+          <option>Economics</option>
+          <option>Law</option>
+          <option>Education</option>
+          <option>Environmental Science</option>
+          <option>Psychology</option>
+        </select>
+      </div>
+      <div class="upload-field full">
+        <label>Abstract / Summary</label>
+        <textarea id="up-abstract" placeholder="Brief description of the research findings..."></textarea>
+      </div>
+      <div class="upload-field">
+        <label>Author</label>
+        <input type="text" id="up-author" placeholder="e.g. Dr. Ronsherlock"/>
+      </div>
+      <div class="upload-field">
+        <label>Document URL (GitHub Raw Link)</label>
+        <input type="url" id="up-url" placeholder="https://raw.githubusercontent.com/..."/>
+      </div>
+    </div>
+    <button class="upload-btn" onclick="addPaper()">➕ Publish Research Paper</button>
+  </div>
+
+  <!-- Filter Bar -->
+  <div id="filter-bar">
+    <span class="filter-label">Filter by:</span>
+    <div class="filter-chips" id="filter-chips">
+      <span class="chip active" data-filter="all" onclick="filterPapers('all', this)">All Papers</span>
+    </div>
+  </div>
+
+  <!-- Research Grid header -->
+  <div class="section-header">
+    <h2 class="section-title" id="grid-heading">Research Papers</h2>
+    <hr class="section-rule"/>
+    <span class="section-count" id="grid-count">0 papers</span>
+  </div>
+
+  <!-- Grid -->
+  <div id="research-grid">
+    <div class="empty-state">
+      <div class="icon">📭</div>
+      <p>No research papers yet.<br>Admin can add papers using the button above.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 <strong>RONSHERLOCK Research &amp; Information Center</strong> · All rights reserved · Hosted on GitHub Pages
+</footer>
+
+<div id="toast">✅ Paper published successfully!</div>
+
+<script>
+  // ── COURSE COLORS ──
+  const courseColors = {
+    'Computer Science':        { accent: '#0288D1', tag: '#0288D1' },
+    'Medicine & Health Sciences': { accent: '#C2185B', tag: '#C2185B' },
+    'Engineering':             { accent: '#5C2D91', tag: '#5C2D91' },
+    'Biology':                 { accent: '#2E7D32', tag: '#2E7D32' },
+    'Chemistry':               { accent: '#E65100', tag: '#E65100' },
+    'Physics':                 { accent: '#1565C0', tag: '#1565C0' },
+    'Mathematics':             { accent: '#6A1B9A', tag: '#6A1B9A' },
+    'Economics':               { accent: '#00695C', tag: '#00695C' },
+    'Law':                     { accent: '#4E342E', tag: '#4E342E' },
+    'Education':               { accent: '#F57F17', tag: '#F57F17' },
+    'Environmental Science':   { accent: '#1B5E20', tag: '#1B5E20' },
+    'Psychology':              { accent: '#880E4F', tag: '#880E4F' },
+  };
+
+  function courseColor(course) {
+    return courseColors[course] || { accent: '#1B2A8A', tag: '#1B2A8A' };
+  }
+
+  // ── DATA (in-memory; persists via localStorage) ──
+  let papers = JSON.parse(localStorage.getItem('rric_papers') || '[]');
+  let currentUser = null;
+  let activeFilter = 'all';
+  let adminUnlocked = false;
+
+  // ── GATE ──
+  function enterSite() {
+    const name   = document.getElementById('gate-name').value.trim();
+    const course = document.getElementById('gate-course').value;
+    if (!name)   { alert('Please enter your name.'); return; }
+    if (!course) { alert('Please select your course.'); return; }
+    currentUser = { name, course };
+    document.getElementById('onboarding-gate').style.display = 'none';
+    setupForUser();
+  }
+
+  function setupForUser() {
+    // Welcome banner
+    document.getElementById('banner-name').textContent   = currentUser.name;
+    document.getElementById('banner-course').textContent = currentUser.course;
+    document.getElementById('welcome-banner').classList.add('visible');
+
+    // Auto-filter to user's course
+    if (currentUser.course !== 'All Courses') {
+      activeFilter = currentUser.course;
+    } else {
+      activeFilter = 'all';
+    }
+
+    buildFilterChips();
+    renderGrid();
+    updateStats();
+
+    document.getElementById('filter-bar').classList.add('visible');
+  }
+
+  // ── FILTER CHIPS ──
+  function buildFilterChips() {
+    const courses = [...new Set(papers.map(p => p.course))];
+    const container = document.getElementById('filter-chips');
+    container.innerHTML = `<span class="chip${activeFilter==='all'?' active':''}" data-filter="all" onclick="filterPapers('all',this)">All Papers</span>`;
+    courses.forEach(c => {
+      const col = courseColor(c);
+      const active = activeFilter === c ? ' active' : '';
+      container.innerHTML += `<span class="chip${active}" data-filter="${c}" onclick="filterPapers('${c}',this)" style="${active?'background:'+col.tag+';border-color:'+col.tag:''}">${c}</span>`;
+    });
+  }
+
+  function filterPapers(filter, el) {
+    activeFilter = filter;
+    document.querySelectorAll('.chip').forEach(c => {
+      c.classList.remove('active');
+      c.style.background = '';
+      c.style.borderColor = '';
+      c.style.color = '';
+    });
+    el.classList.add('active');
+    if (filter !== 'all') {
+      const col = courseColor(filter);
+      el.style.background    = col.tag;
+      el.style.borderColor   = col.tag;
+      el.style.color         = '#fff';
+    }
+    renderGrid();
+  }
+
+  // ── RENDER GRID ──
+  function renderGrid() {
+    const grid = document.getElementById('research-grid');
+    let filtered = papers;
+
+    if (activeFilter !== 'all') {
+      filtered = papers.filter(p => p.course === activeFilter);
+    }
+
+    // If user's course doesn't match 'All Courses', only show their course by default
+    // (but they can override via chip)
+    if (filtered.length === 0) {
+      grid.innerHTML = `<div class="empty-state"><div class="icon">🔍</div><p>No papers found for <strong>${activeFilter === 'all' ? 'any course' : activeFilter}</strong> yet.</p></div>`;
+      document.getElementById('grid-count').textContent = '0 papers';
+      return;
+    }
+
+    document.getElementById('grid-count').textContent = filtered.length + ' paper' + (filtered.length !== 1 ? 's' : '');
+    grid.innerHTML = filtered.map(p => {
+      const col = courseColor(p.course);
+      return `
+        <div class="research-card">
+          <div class="card-accent" style="background: linear-gradient(90deg, ${col.accent}, #C2185B)"></div>
+          <div class="card-body">
+            <span class="card-course-tag" style="background:${col.tag}">${p.course}</span>
+            <div class="card-title">${p.title}</div>
+            <div class="card-abstract">${p.abstract}</div>
+            <div class="card-meta">
+              <span>✍️ ${p.author} · <span class="card-date">${p.date}</span></span>
+              ${p.url ? `<a class="card-download" href="${p.url}" target="_blank" style="background:${col.tag}">⬇️ PDF</a>` : '<span style="font-size:12px;color:#bbb">No file linked</span>'}
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  // ── STATS ──
+  function updateStats() {
+    document.getElementById('stat-papers').textContent  = papers.length;
+    document.getElementById('stat-courses').textContent = new Set(papers.map(p => p.course)).size;
+  }
+
+  // ── ADMIN ──
+  const ADMIN_PASS = 'ronsherlock2025'; // change this password
+
+  function toggleAdmin() {
+    if (adminUnlocked) {
+      document.getElementById('upload-panel').classList.toggle('visible');
+      return;
+    }
+    const pass = prompt('Enter admin password:');
+    if (pass === ADMIN_PASS) {
+      adminUnlocked = true;
+      document.getElementById('upload-panel').classList.add('visible');
+      showToast('🔓 Admin access granted!');
+    } else if (pass !== null) {
+      alert('Incorrect password.');
+    }
+  }
+
+  function addPaper() {
+    const title    = document.getElementById('up-title').value.trim();
+    const course   = document.getElementById('up-course').value;
+    const abstract = document.getElementById('up-abstract').value.trim();
+    const author   = document.getElementById('up-author').value.trim();
+    const url      = document.getElementById('up-url').value.trim();
+
+    if (!title || !course || !abstract || !author) {
+      alert('Please fill in Title, Course, Abstract and Author.'); return;
+    }
+
+    const paper = {
+      id: Date.now(),
+      title, course, abstract, author, url,
+      date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+    };
+
+    papers.unshift(paper);
+    localStorage.setItem('rric_papers', JSON.stringify(papers));
+
+    // Reset form
+    ['up-title','up-abstract','up-author','up-url'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('up-course').value = '';
+
+    buildFilterChips();
+    renderGrid();
+    updateStats();
+    showToast('✅ Paper published successfully!');
+  }
+
+  // ── TOAST ──
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // ── NAV (simple) ──
+  function showSection(s, el) {
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    el.classList.add('active');
+    // For now all content is on one page; could expand later
+  }
+
+  // ── INIT ──
+  // Pre-load a sample paper to show layout
+  if (papers.length === 0) {
+    papers = [
+      {
+        id: 1,
+        title: "Artificial Intelligence in Early Disease Diagnosis: A Systematic Review",
+        course: "Medicine & Health Sciences",
+        abstract: "This paper reviews the application of machine learning algorithms in the early detection of chronic diseases, including diabetes, cancer, and cardiovascular conditions. Results show a 34% improvement in early detection rates using AI-assisted screening tools.",
+        author: "Dr. Ronsherlock",
+        url: "",
+        date: "10 Jan 2025"
+      },
+      {
+        id: 2,
+        title: "Quantum Computing Approaches to Cryptographic Security",
+        course: "Computer Science",
+        abstract: "An analysis of post-quantum cryptographic algorithms and their resilience against quantum computing attacks. We propose a hybrid lattice-based encryption scheme with 98.7% resistance against known quantum decryption strategies.",
+        author: "Dr. Ronsherlock",
+        url: "",
+        date: "22 Mar 2025"
+      },
+      {
+        id: 3,
+        title: "Renewable Energy Integration in Sub-Saharan Power Grids",
+        course: "Engineering",
+        abstract: "This research examines the technical and economic feasibility of integrating solar and wind energy into existing Sub-Saharan African power infrastructure. Simulation models demonstrate a 60% reduction in grid instability with proposed microgrid designs.",
+        author: "Dr. Ronsherlock",
+        url: "",
+        date: "05 Jun 2025"
+      }
+    ];
+    localStorage.setItem('rric_papers', JSON.stringify(papers));
+  }
+</script>
+
+</body>
+</html>
